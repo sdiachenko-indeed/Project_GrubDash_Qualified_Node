@@ -7,7 +7,7 @@ const ATTACHED_PATH = "/dishes-router";
 
 const app = makeTestApp(ATTACHED_PATH, dishesRouter);
 
-describe("dishes router", () => {
+describe.only("dishes router", () => {
   beforeEach(() => {
     dishes.splice(0, dishes.length);
   });
@@ -87,6 +87,7 @@ describe("dishes router", () => {
       expect(response.body.error).toContain("image_url");
       expect(response.status).toBe(400);
     });
+
     test("returns 400 if image_url is empty", async () => {
       const response = await request(app)
         .post(ATTACHED_PATH)
